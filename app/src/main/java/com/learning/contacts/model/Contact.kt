@@ -7,10 +7,10 @@ import com.learning.contacts.model.Contact.Companion.CONTACTS_TABLE_NAME
 @Entity(tableName = CONTACTS_TABLE_NAME)
 data class Contact (
 
-    @PrimaryKey
-    var id: Int? = 0,
-    var firstName: String = "",
-    var lastName: String = "",
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0,
+    var firstname: String = "",
+    var lastname: String = "",
     var email: String = "",
     var phone: String = ""
 
