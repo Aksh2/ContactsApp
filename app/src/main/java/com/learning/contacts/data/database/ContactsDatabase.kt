@@ -8,7 +8,8 @@ import com.learning.contacts.model.Contact
 
 @Database(
     entities = [Contact::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class ContactsDatabase : RoomDatabase() {
 
