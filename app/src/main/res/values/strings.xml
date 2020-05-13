@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ContactsApp</string>
     <string name="action_settings">Settings</string>
+    <string name="label_first_name">First Name</string>
+    <string name="label_last_name">Last Name</string>
+    <string name="label_mobile">Mobile</string>
+    <string name="label_email">Email</string>
 </resources>
