@@ -1,6 +1,8 @@
 package com.learning.contacts.di.module
 
 import androidx.lifecycle.ViewModel
+import com.learning.contacts.ui.addcontact.AddContactViewModel
+import com.learning.contacts.ui.contactdetails.ContactDetailsViewModel
 import com.learning.contacts.ui.main.MainViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -23,8 +25,13 @@ abstract class ViewModelModule {
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
 
-    /*@Binds
+    @Binds
     @IntoMap
     @ViewModelKey(ContactDetailsViewModel::class)
-    abstract fun bindContactDetailsViewModel(viewModel: ContactDetailsViewModel): ViewModel*/
+    abstract fun bindContactDetailsViewModel(viewModel: ContactDetailsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddContactViewModel::class)
+    abstract fun bindAddContactViewModel(viewModel: AddContactViewModel): ViewModel
 }
