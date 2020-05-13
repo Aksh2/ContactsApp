@@ -6,6 +6,8 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
@@ -15,13 +17,22 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofitService(): ContactsService = Retrofit.Builder()
+    fun provideRetrofitService(client: OkHttpClient): ContactsService = Retrofit.Builder()
         .baseUrl(CONTACTS_SERVICE_BASE_URL)
         .addConverterFactory(
             MoshiConverterFactory.create(
                 Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-            )
+            ).asLenient()
         )
+        .client(client)
         .build()
         .create(ContactsService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideOkHttpClient(): OkHttpClient {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        return OkHttpClient.Builder().addInterceptor(interceptor).build()
+    }
 }
