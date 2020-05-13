@@ -6,6 +6,7 @@ import com.learning.contacts.network.ContactsService
 import com.learning.contacts.network.ResponseState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import retrofit2.Response
 import javax.inject.Inject
@@ -14,7 +15,7 @@ class ContactRepository @Inject constructor(
     private val contactsDao: ContactsDao,
     private val contactsService: ContactsService
 ) {
-    fun getAllContacts(): Flow<ResponseState<List<Contact>>>{
+    fun getAllContacts(): Flow<ResponseState<List<Contact>>> {
 
         return object : NetworkBoundRepository<List<Contact>, List<Contact>>(){
             override suspend fun saveRemoteData(response: List<Contact>) {
@@ -26,5 +27,21 @@ class ContactRepository @Inject constructor(
 
             override suspend fun fetchFromRemote(): Response<List<Contact>> = contactsService.getContacts()
         }.asFlow().flowOn(Dispatchers.IO)
+    }
+
+    fun getContactById(id: Int): Flow<Contact> = contactsDao.getContactById(id)
+
+    fun saveContact(contact: Contact): Flow<String> {
+        return flow {
+            val response = contactsService.postContacts(contact)
+
+            if (response.isSuccessful && !response.body().isNullOrEmpty()) {
+                emit(response.body()!!)
+            } else {
+                emit("Something went wrong, Please try again !")
+            }
+        }.flowOn(Dispatchers.IO)
+
+
     }
 }
