@@ -9,4 +9,5 @@ architecture components like Livedata, ViewModels.
 5. Uses Dagger 2 for dependency Injection and to fecilitate code re use.
 6. Network aware activities.
 
-Note: The app uses swipe refresh layout in the main screen. Swipe to reload latest contacts.
+Note: 1. The app uses swipe refresh layout in the main screen. Swipe to reload latest contacts. 
+      2. The project will run only in Android Studio 3.6 or greater. Please use the latest version of Android Studio.
