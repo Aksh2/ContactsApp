@@ -1,11 +1,15 @@
 package com.learning.contacts.ui.addcontact
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
+import com.learning.contacts.R
 import com.learning.contacts.databinding.ActivityAddContactBinding
 import com.learning.contacts.model.Contact
 import com.learning.contacts.ui.base.BaseActivity
+import com.learning.contacts.utils.NetworkUtils
+import com.learning.contacts.utils.showToast
 import com.learning.contacts.utils.viewModelOf
 import kotlinx.android.synthetic.main.activity_add_contact.*
 
@@ -16,6 +20,15 @@ class AddContactActivity : BaseActivity<AddContactViewModel, ActivityAddContactB
         setContentView(mViewBinding.root)
         title = "Add Contact"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        NetworkUtils.getNetworkState(this).observe(this, Observer { isConnected ->
+            if (isConnected) {
+                mViewBinding.btnSave.isEnabled = true
+            } else {
+                mViewBinding.btnSave.isEnabled = false
+                showToast(this, getString(R.string.no_connection), Toast.LENGTH_LONG)
+            }
+        })
 
         mViewBinding.btnSave.setOnClickListener {
             val newContact = Contact(
@@ -34,6 +47,7 @@ class AddContactActivity : BaseActivity<AddContactViewModel, ActivityAddContactB
                     }
                 alertDialogBuilder.create().show()
             })
+
         }
     }
 
