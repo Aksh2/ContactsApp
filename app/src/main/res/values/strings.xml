@@ -6,4 +6,6 @@
     <string name="label_mobile">Mobile</string>
     <string name="label_email">Email</string>
     <string name="btn_save_labbel">Save</string>
+    <string name="no_connection">No Internet Connection</string>
+    <string name="connected">Back Online</string>
 </resources>
