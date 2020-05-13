@@ -1,5 +1,6 @@
 package com.learning.contacts.di.builder
 
+import com.learning.contacts.ui.addcontact.AddContactActivity
 import com.learning.contacts.ui.contactdetails.ContactDetailActivity
 import com.learning.contacts.ui.main.MainActivity
 import dagger.Module
@@ -12,4 +13,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract fun bindContactDetailActivity(): ContactDetailActivity
+
+    @ContributesAndroidInjector
+    abstract fun bindAddContactActivity(): AddContactActivity
 }
