@@ -1,5 +1,6 @@
 package com.learning.contacts.data.repository
 
+import android.util.Log
 import com.learning.contacts.data.database.ContactsDao
 import com.learning.contacts.model.Contact
 import com.learning.contacts.network.ContactsService
@@ -15,6 +16,7 @@ class ContactRepository @Inject constructor(
     private val contactsDao: ContactsDao,
     private val contactsService: ContactsService
 ) {
+    private val TAG = ContactRepository::class.java.simpleName
     fun getAllContacts(): Flow<ResponseState<List<Contact>>> {
 
         return object : NetworkBoundRepository<List<Contact>, List<Contact>>(){
@@ -34,11 +36,15 @@ class ContactRepository @Inject constructor(
     fun saveContact(contact: Contact): Flow<String> {
         return flow {
             val response = contactsService.postContacts(contact)
-
+            Log.d(TAG, "Response: $response")
             if (response.isSuccessful && !response.body().isNullOrEmpty()) {
                 emit(response.body()!!)
             } else {
-                emit("Something went wrong, Please try again !")
+                if (response.code() == 400) {
+                    emit(response.errorBody()!!.string())
+                } else {
+                    emit("Something went wrong, Please try again !")
+                }
             }
         }.flowOn(Dispatchers.IO)
 
