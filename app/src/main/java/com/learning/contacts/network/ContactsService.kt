@@ -12,7 +12,7 @@ interface ContactsService {
     suspend fun getContacts(): Response<List<Contact>>
 
     @POST("/contacts")
-    suspend fun postContacts(@Body contact: Contact)
+    suspend fun postContacts(@Body contact: Contact): Response<String>
 
     companion object {
         const val CONTACTS_SERVICE_BASE_URL = "http://167.172.6.138:8080"
