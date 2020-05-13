@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ContactsDao {
-       @Insert
-       fun insertContact(contact: Contact)
-
        @Insert(onConflict = OnConflictStrategy.REPLACE)
        fun insertContactList(contacts: List<Contact>)
 
        @Query("SELECT * FROM ${Contact.CONTACTS_TABLE_NAME}")
        fun getAllContacts(): Flow<List<Contact>>
+
+       @Query("SELECT * from ${Contact.CONTACTS_TABLE_NAME} where id=:id")
+       fun getContactById(id: Int): Flow<Contact>
 }
