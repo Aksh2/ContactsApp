@@ -11,15 +11,15 @@
         <ImageView
             android:id="@+id/ivContactIcon"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="@dimen/contact_image_height"
             android:src="@drawable/ic_contact"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvFirstName"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/cardview_margin"
             app:layout_constraintEnd_toStartOf="@id/cvLastName"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,23 +29,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="@dimen/padding_16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_first_name"
                     android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/cardview_text" />
 
                 <TextView
                     android:id="@+id/tvFirstName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/margin_8dp"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/cardview_text"
                     tools:text="Test" />
 
             </LinearLayout>
@@ -54,9 +54,9 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvLastName"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/margin_8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cvFirstName"
             app:layout_constraintTop_toBottomOf="@id/ivContactIcon">
@@ -65,24 +65,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="@dimen/padding_16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_last_name"
                     android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/cardview_text"
                     tools:text="Last Name" />
 
                 <TextView
                     android:id="@+id/tvLastName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/margin_8dp"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/cardview_text"
                     tools:text="User" />
 
             </LinearLayout>
@@ -93,7 +93,7 @@
             android:id="@+id/cvMobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/cardview_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cvLastName">
 
@@ -101,24 +101,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="@dimen/padding_16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_mobile"
                     android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/cardview_text"
                     tools:text="Mobile" />
 
                 <TextView
                     android:id="@+id/tvMobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/margin_8dp"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/cardview_text"
                     tools:text="8943013101" />
 
             </LinearLayout>
@@ -129,7 +129,7 @@
             android:id="@+id/cvEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/cardview_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cvMobile">
 
@@ -137,24 +137,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="@dimen/padding_16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_email"
                     android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/cardview_text"
                     tools:text="Email" />
 
                 <TextView
                     android:id="@+id/tvEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/margin_8dp"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/cardview_text"
                     tools:text="xyz@gmail.com" />
 
             </LinearLayout>
